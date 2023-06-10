@@ -26,4 +26,10 @@ yarn
 ```
 yarn dev
 ```
+if you are using `powershell` terminal and see `...yarn.ps1 cannot be loaded...` error, try:
+```
+Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser
+```
+and then `yarn dev`
+
 4. open your favorite browser at http://localhost:5173/
