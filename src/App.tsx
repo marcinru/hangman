@@ -1,12 +1,14 @@
+import { useState } from 'react'
 import './App.css'
 
 function App() {
+  const [lives, setLives] = useState(5);
   const hiddenWord = 'apple'.split('');
 
   return (
     <>
       <h1>Hangman</h1>
-      <h2>Lives 3/5</h2>
+      <h2>Lives {lives}/5</h2>
       <div className="guessed">
         A____
       </div>
@@ -17,7 +19,8 @@ function App() {
           if (hiddenWord.includes(input.value.toLowerCase())) {
             console.log('guessed');
           } else {
-            console.log('not guessed');
+            console.log('not guessed, you lose 1 life');
+            setLives((lives) => lives - 1)
           }
           input.value = '';
         }}>
