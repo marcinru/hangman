@@ -1,5 +1,4 @@
 import { useState, FormEvent, ChangeEvent } from 'react'
-import './App.css'
 
 function App() {
   const hiddenWord = 'apple'.split('')
