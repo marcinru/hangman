@@ -1,4 +1,5 @@
 import { useState, FormEvent, ChangeEvent } from 'react'
+import styles from './App.module.scss'
 
 function App() {
   const hiddenWord = 'apple'.split('')
@@ -31,11 +32,13 @@ function App() {
       <h1>Hangman</h1>
       <h2>Lives {lives}/5</h2>
       <div className="guessed">{guessed}</div>
-      <form onSubmit={guess}>
-        <input value={letter} onChange={onLetterChange} placeholder="Enter a letter" autoComplete="off" />
-        <button type="submit">
-          Confirm
-        </button>
+      <form className={styles.form} onSubmit={guess}>
+        <div className="input-group mb-3">
+          <input className="form-control" value={letter} onChange={onLetterChange} placeholder="Enter a letter" autoComplete="off" />
+          <button type="submit" className="btn btn-outline-secondary">
+            Confirm
+          </button>
+        </div>
       </form>
     </>
   )
