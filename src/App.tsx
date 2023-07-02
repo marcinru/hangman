@@ -1,31 +1,41 @@
-import { useState, FormEvent, ChangeEvent } from 'react'
-import styles from './App.module.scss'
+import { useState, FormEvent, ChangeEvent } from "react";
+import styles from "./App.module.scss";
+import { Alert } from "./alerts/Alert";
 
 function App() {
-  const hiddenWord = 'apple'.split('')
-  const [letter, setLetter] = useState('')
-  const [lives, setLives] = useState(5)
-  const [guessed, setGuessed] = useState(new Array(hiddenWord.length).fill('_').join(''))
+  const hiddenWord = "apple".split("");
+  const [letter, setLetter] = useState("");
+  const [lives, setLives] = useState(5);
+  const [guessed, setGuessed] = useState(
+    new Array(hiddenWord.length).fill("_").join("")
+  );
+  const [success, setSuccess] = useState(false);
 
   const guess = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
+    event.preventDefault();
     if (hiddenWord.includes(letter)) {
-      const guessedArray = guessed.split('')
+      const guessedArray = guessed.split("");
       hiddenWord.forEach((char, index) => {
         if (char === letter) {
-          guessedArray[index] = letter
+          guessedArray[index] = letter;
         }
-        setGuessed(guessedArray.join(''))
-      })
+        setGuessed(guessedArray.join(""));
+      });
+      console.log("success", success);
+      console.log("guessed", guessedArray.join(""));
+      console.log("hiddenWord", hiddenWord.join(""));
+      if (guessedArray.join("") === hiddenWord.join("")) {
+        setSuccess(true);
+      }
     } else {
-      setLives((lives) => lives - 1)
+      setLives((lives) => lives - 1);
     }
-    setLetter('')
-  }
+    setLetter("");
+  };
 
   const onLetterChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setLetter(event.target.value)
-  }
+    setLetter(event.target.value);
+  };
 
   return (
     <div className="container">
@@ -35,20 +45,24 @@ function App() {
       <form className={styles.form} onSubmit={guess}>
         <div className="input-group mb-3">
           <input
-              autoComplete="off"
-              autoFocus
-              className="form-control"
-              onChange={onLetterChange}
-              placeholder="Enter a letter"
-              value={letter}
+            autoComplete="off"
+            autoFocus
+            className="form-control"
+            onChange={onLetterChange}
+            placeholder="Enter a letter"
+            value={letter}
           />
           <button type="submit" className="btn btn-outline-secondary">
             Confirm
           </button>
         </div>
       </form>
+      {success && (
+        <Alert type="success" message="Congrats! You've guessed it!" />
+      )}
+      <Alert type="danger" message="Game over!" />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
