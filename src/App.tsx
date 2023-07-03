@@ -21,9 +21,6 @@ function App() {
         }
         setGuessed(guessedArray.join(""));
       });
-      console.log("success", success);
-      console.log("guessed", guessedArray.join(""));
-      console.log("hiddenWord", hiddenWord.join(""));
       if (guessedArray.join("") === hiddenWord.join("")) {
         setSuccess(true);
       }
@@ -60,7 +57,7 @@ function App() {
       {success && (
         <Alert type="success" message="Congrats! You've guessed it!" />
       )}
-      <Alert type="danger" message="Game over!" />
+      {lives === 0 && <Alert type="danger" message="Game over!" />}
     </div>
   );
 }
