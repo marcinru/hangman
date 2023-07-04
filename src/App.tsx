@@ -1,6 +1,7 @@
 import { useState, FormEvent, ChangeEvent } from "react";
-import styles from "./App.module.scss";
 import { Alert } from "./alerts/Alert";
+
+import styles from "./App.module.scss";
 
 function App() {
   const hiddenWord = "apple".split("");
@@ -9,7 +10,8 @@ function App() {
   const [guessed, setGuessed] = useState(
     new Array(hiddenWord.length).fill("_").join("")
   );
-  const [success, setSuccess] = useState(false);
+  const win = guessed === hiddenWord.join("");
+  const lost = lives === 0;
 
   const guess = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -21,9 +23,6 @@ function App() {
         }
         setGuessed(guessedArray.join(""));
       });
-      if (guessedArray.join("") === hiddenWord.join("")) {
-        setSuccess(true);
-      }
     } else {
       setLives((lives) => lives - 1);
     }
@@ -34,11 +33,15 @@ function App() {
     setLetter(event.target.value);
   };
 
+  const startNewGame = () => {
+    setLives(5);
+  };
+
   return (
     <div className="container">
       <h1>Hangman</h1>
       <h2>Lives {lives}/5</h2>
-      <div className="guessed">{guessed}</div>
+      <div className={styles.guessed}>{guessed}</div>
       <form className={styles.form} onSubmit={guess}>
         <div className="input-group mb-3">
           <input
@@ -54,10 +57,13 @@ function App() {
           </button>
         </div>
       </form>
-      {success && (
-        <Alert type="success" message="Congrats! You've guessed it!" />
+      {win && <Alert type="success" message="Congrats! You've guessed it!" />}
+      {lost && <Alert type="danger" message="Game over!" />}
+      {(win || lost) && (
+        <button className="btn btn-primary btn-lg" onClick={startNewGame}>
+          New game?
+        </button>
       )}
-      {lives === 0 && <Alert type="danger" message="Game over!" />}
     </div>
   );
 }
