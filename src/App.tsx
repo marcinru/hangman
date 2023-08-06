@@ -1,11 +1,11 @@
 import { useState, FormEvent, ChangeEvent } from "react";
 import { Alert } from "./alerts/Alert";
-import { hidden } from "./data/secret";
+import { getRandomWord } from "./data/secret";
 
 import styles from "./App.module.scss";
 
 function App() {
-  const [hiddenWord, setHiddenWord] = useState(hidden[0]);
+  const [hiddenWord, setHiddenWord] = useState(getRandomWord());
   const [letter, setLetter] = useState("");
   const [lives, setLives] = useState(5);
   const [guessed, setGuessed] = useState(
@@ -36,7 +36,7 @@ function App() {
 
   const startNewGame = () => {
     setLives(5);
-    setHiddenWord(hidden[1]);
+    setHiddenWord(getRandomWord());
     setGuessed(new Array(hiddenWord.length).fill("_").join(""));
   };
 
