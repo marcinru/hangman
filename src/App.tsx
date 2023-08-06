@@ -5,7 +5,7 @@ import { hidden } from "./data/secret";
 import styles from "./App.module.scss";
 
 function App() {
-  const hiddenWord = hidden[0];
+  const [hiddenWord, setHiddenWord] = useState(hidden[0]);
   const [letter, setLetter] = useState("");
   const [lives, setLives] = useState(5);
   const [guessed, setGuessed] = useState(
@@ -36,7 +36,8 @@ function App() {
 
   const startNewGame = () => {
     setLives(5);
-    setGuessed('');
+    setHiddenWord(hidden[1]);
+    setGuessed(new Array(hiddenWord.length).fill("_").join(""));
   };
 
   return (
