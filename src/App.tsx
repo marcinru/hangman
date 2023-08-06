@@ -4,7 +4,7 @@ import { Alert } from "./alerts/Alert";
 import styles from "./App.module.scss";
 
 function App() {
-  const hiddenWord = "apple".split("");
+  const hiddenWord = "Apple".toLowerCase().split("");
   const [letter, setLetter] = useState("");
   const [lives, setLives] = useState(5);
   const [guessed, setGuessed] = useState(
@@ -30,11 +30,12 @@ function App() {
   };
 
   const onLetterChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setLetter(event.target.value);
+    setLetter(event.target.value.toLowerCase());
   };
 
   const startNewGame = () => {
     setLives(5);
+    setGuessed('');
   };
 
   return (
