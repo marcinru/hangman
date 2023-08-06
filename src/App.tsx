@@ -31,7 +31,7 @@ function App() {
   };
 
   const onLetterChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setLetter(event.target.value.toLowerCase());
+    setLetter(event.target.value.toUpperCase());
   };
 
   const startNewGame = () => {

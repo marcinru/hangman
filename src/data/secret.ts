@@ -2,5 +2,5 @@ export const hidden: string[] = ['apple', 'banana', 'tomato', 'potato', 'pineapp
 
 export const getRandomWord = (): string => {
     const index = Math.floor(Math.random() * hidden.length);
-    return hidden[index];
+    return hidden[index].toUpperCase();
 }
