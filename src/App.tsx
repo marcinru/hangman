@@ -2,8 +2,6 @@ import { useState, FormEvent, ChangeEvent } from "react";
 import { Alert } from "./alerts/Alert";
 import { getRandomWord } from "./data/secret";
 
-import styles from "./App.module.scss";
-
 function App() {
   const [hiddenWord, setHiddenWord] = useState(getRandomWord());
   const [letter, setLetter] = useState("");
@@ -44,8 +42,8 @@ function App() {
     <div className="container">
       <h1>Hangman</h1>
       <h2>Lives {lives}/5</h2>
-      <div className={styles.guessed}>{guessed}</div>
-      <form className={styles.form} onSubmit={guess}>
+      <div className="font-mono tracking-widest">{guessed}</div>
+      <form className="" onSubmit={guess}>
         <div className="input-group mb-3">
           <input
             autoComplete="off"
