@@ -1,23 +1,24 @@
 import { useState, FormEvent, ChangeEvent } from "react";
 import { Alert } from "./alerts/Alert";
+import { hidden } from "./data/secret";
 
 import styles from "./App.module.scss";
 
 function App() {
-  const hiddenWord = "Apple".toLowerCase().split("");
+  const hiddenWord = hidden[0];
   const [letter, setLetter] = useState("");
   const [lives, setLives] = useState(5);
   const [guessed, setGuessed] = useState(
     new Array(hiddenWord.length).fill("_").join("")
   );
-  const win = guessed === hiddenWord.join("");
+  const win = guessed === hiddenWord;
   const lost = lives === 0;
 
   const guess = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (hiddenWord.includes(letter)) {
       const guessedArray = guessed.split("");
-      hiddenWord.forEach((char, index) => {
+      hiddenWord.split("").forEach((char, index) => {
         if (char === letter) {
           guessedArray[index] = letter;
         }
