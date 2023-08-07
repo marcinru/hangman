@@ -39,24 +39,29 @@ function App() {
   };
 
   return (
-    <div className="container">
+    <div className="container mx-auto bg-gray-100 w-1/2 p-5">
       <h1>Hangman</h1>
       <h2>Lives {lives}/5</h2>
       <div className="font-mono tracking-widest">{guessed}</div>
       <form className="" onSubmit={guess}>
-        <div className="input-group mb-3">
-          <input
+        <input
             autoComplete="off"
             autoFocus
-            className="form-control"
+            className="my-2 rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
             onChange={onLetterChange}
             placeholder="Enter a letter"
+            type="text"
             value={letter}
-          />
-          <button type="submit" className="btn btn-outline-secondary">
-            Confirm
-          </button>
-        </div>
+        />
+        <button
+            className="inline-flex items-center justify-center px-4 py-2 text-base font-medium leading-6 text-white whitespace-no-wrap bg-blue-600 border border-blue-700 rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            data-rounded="rounded-md"
+            data-primary="blue-600"
+            data-primary-reset="{}"
+            type="submit"
+        >
+          Confirm
+        </button>
       </form>
       {win && <Alert type="success" message="Congrats! You've guessed it!" />}
       {lost && <Alert type="danger" message="Game over!" />}
