@@ -43,8 +43,15 @@ function App() {
       <header className="text-5xl border-b border-neutral-500 py-7 mb-8">
         <h1>Hangman</h1>
       </header>
-      <div className="bg-white rounded-lg px-6 py-3">
-        <h2>Lives {lives}/5</h2>
+      <div className="bg-white rounded-lg px-6 py-3 flex divide-x divide-neutral-500 w-fit">
+        <div className="w-24">
+          <h2>Lives</h2>
+          <output>{lives}/5</output>
+        </div>
+        <div className="w-24 text-right">
+          <h2>Category</h2>
+          <output>fruits</output>
+        </div>
       </div>
       <div className="font-mono tracking-widest">{guessed}</div>
       <form className="" onSubmit={guess}>
