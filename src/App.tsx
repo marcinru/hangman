@@ -40,16 +40,16 @@ function App() {
 
   return (
     <div className="container mx-auto w-1/2 p-5 font-serif">
-      <header className="text-5xl border-b border-neutral-500 py-7 mb-8">
-        <h1>Hangman</h1>
+      <header className="border-b border-neutral-500 py-16 mb-16">
+        <h1 className="text-5xl">Hangman</h1>
       </header>
       <div className="bg-white rounded-lg px-6 py-3 flex divide-x divide-neutral-500 w-fit">
-        <div className="w-24">
-          <h2>Lives</h2>
+        <div className="w-36">
+          <h2 className="text-2xl">Lives</h2>
           <output>{lives}/5</output>
         </div>
-        <div className="w-24 text-right">
-          <h2>Category</h2>
+        <div className="w-36 text-right">
+          <h2 className="text-2xl">Category</h2>
           <output>fruits</output>
         </div>
       </div>
