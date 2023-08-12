@@ -1,6 +1,7 @@
 import { useState, FormEvent, ChangeEvent } from "react";
 import { Alert } from "./alerts/Alert";
 import { getRandomWord } from "./data/secret";
+import Button from "./buttons/Button";
 
 function App() {
   const [hiddenWord, setHiddenWord] = useState(getRandomWord());
@@ -67,23 +68,12 @@ function App() {
               type="text"
               value={letter}
           />
-          <button
-              className="uppercase text-white bg-orange-700 border border-orange-700 rounded-md px-4 py-1"
-              type="submit"
-          >
-            Confirm
-          </button>
+          <Button label="Confirm" type="submit" />
         </form>
         {win && <Alert type="success" message="Congrats! You've guessed it!" />}
         {lost && <Alert type="danger" message="Game over!" />}
         {(win || lost) && (
-          <button
-              className="uppercase text-white bg-orange-700 border border-orange-700 rounded-md px-4 py-1"
-              onClick={startNewGame}
-              type="button"
-          >
-            New game?
-          </button>
+          <Button label="New game" type="button" onClick={startNewGame} />
         )}
       </div>
     </div>
