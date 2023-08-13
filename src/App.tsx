@@ -1,8 +1,8 @@
-import {useState, FormEvent, ChangeEvent, useRef} from "react";
-import { Alert } from "./alerts/Alert";
-import { getRandomWord } from "./data/secret";
+import {ChangeEvent, FormEvent, useRef, useState} from "react";
+import {Alert} from "./alerts/Alert";
+import {getRandomWord} from "./data/secret";
 import Button from "./buttons/Button";
-import Heart from "./icons/Heart";
+import {HeartIcon} from "@heroicons/react/20/solid";
 
 function App() {
   const [hiddenWord, setHiddenWord] = useState(getRandomWord());
@@ -52,11 +52,11 @@ function App() {
         <div className="w-36">
           <h2 className="text-2xl">Lives</h2>
           <div className="flex items-end">
-            <Heart color="#d02e2e" />
-            <Heart color="#d02e2e" />
-            <Heart color="#d02e2e" />
-            <Heart color="#d29494" />
-            <Heart color="#d29494" />
+            <HeartIcon className="w-4 h-4 text-red-600" />
+            <HeartIcon className="w-4 h-4 text-red-600" />
+            <HeartIcon className="w-4 h-4 text-red-600" />
+            <HeartIcon className="w-4 h-4 text-red-300" />
+            <HeartIcon className="w-4 h-4 text-red-300" />
             <output className="text-sm ml-3">{lives}/5</output>
           </div>
         </div>
