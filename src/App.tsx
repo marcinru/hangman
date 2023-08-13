@@ -2,6 +2,7 @@ import {useState, FormEvent, ChangeEvent, useRef} from "react";
 import { Alert } from "./alerts/Alert";
 import { getRandomWord } from "./data/secret";
 import Button from "./buttons/Button";
+import Heart from "./icons/Heart";
 
 function App() {
   const [hiddenWord, setHiddenWord] = useState(getRandomWord());
@@ -50,11 +51,18 @@ function App() {
       <div className="bg-white rounded-3xl px-6 py-3 flex divide-x divide-neutral-500 w-fit mb-12">
         <div className="w-36">
           <h2 className="text-2xl">Lives</h2>
-          <output>{lives}/5</output>
+          <div className="flex items-end">
+            <Heart color="#d02e2e" />
+            <Heart color="#d02e2e" />
+            <Heart color="#d02e2e" />
+            <Heart color="#d29494" />
+            <Heart color="#d29494" />
+            <output className="text-sm ml-3">{lives}/5</output>
+          </div>
         </div>
         <div className="w-36 text-right">
           <h2 className="text-2xl">Category</h2>
-          <output>fruits</output>
+          <output className="text-sm">fruits</output>
         </div>
       </div>
 
