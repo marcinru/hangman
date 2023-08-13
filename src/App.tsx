@@ -1,4 +1,4 @@
-import { useState, FormEvent, ChangeEvent } from "react";
+import {useState, FormEvent, ChangeEvent, useRef} from "react";
 import { Alert } from "./alerts/Alert";
 import { getRandomWord } from "./data/secret";
 import Button from "./buttons/Button";
@@ -12,6 +12,7 @@ function App() {
   );
   const win = guessed === hiddenWord;
   const lost = lives === 0;
+  const ref = useRef<HTMLInputElement>(null);
 
   const guess = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -37,10 +38,11 @@ function App() {
     setLives(5);
     setHiddenWord(getRandomWord());
     setGuessed(new Array(hiddenWord.length).fill("_").join(""));
+    ref.current?.focus();
   };
 
   return (
-    <div className="container pl-14 font-serif">
+    <div className="container px-14 font-serif">
       <header className="border-b border-neutral-500 py-16 mb-16">
         <h1 className="text-5xl">Hangman</h1>
       </header>
@@ -65,6 +67,7 @@ function App() {
               className="w-40 mr-9 px-5 py-2 rounded-none focus-visible:outline-0 border-b-2 border-neutral-500 placeholder:text-neutral-500 text-lg"
               onChange={onLetterChange}
               placeholder="Enter a letter"
+              ref={ref}
               type="text"
               value={letter}
           />
