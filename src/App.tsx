@@ -70,8 +70,8 @@ function App() {
           />
           <Button label="Confirm" type="submit" />
         </form>
-        {win && <Alert type="success" message="Congrats! You've guessed it!" />}
-        {lost && <Alert type="danger" message="Game over!" />}
+        {win && <Alert type="success" title="Congrats!" message="You've guessed it!" />}
+        {lost && <Alert type="danger" title="Game over!" />}
         {(win || lost) && (
           <Button label="New game" type="button" onClick={startNewGame} />
         )}
